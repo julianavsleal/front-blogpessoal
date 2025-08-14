@@ -4,6 +4,7 @@ import { AuthContext } from "../../../contexts/AuthContext"
 import type Tema from "../../../models/Tema"
 import { buscar, deletar } from "../../../services/Service"
 import { RotatingLines } from "react-loader-spinner"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function DeletarTema() {
 
@@ -33,7 +34,7 @@ function DeletarTema() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado')
+            ToastAlerta("Você precisa estar logado", "info")
             navigate('/')
         }
     }, [token])
@@ -54,13 +55,13 @@ function DeletarTema() {
                 }
             })
 
-            alert('Tema apagado com sucesso')
+            ToastAlerta("Tema apagado com sucesso", "sucesso")
 
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 handleLogout()
             }else {
-                alert('Erro ao deletar o tema.')
+                ToastAlerta("Erro ao deletar o tema.", "erro")
             }
         }
 
@@ -90,9 +91,9 @@ function DeletarTema() {
                         Não
                     </button>
                     <button 
-                        className='w-full text-slate-100 bg-indigo-400 
-                                   hover:bg-indigo-600 flex items-center justify-center'
-                                   onClick={deletarTema}>
+                        className='w-full text-slate-100 bg-[#6b705c] 
+                                hover:bg-[#3f4238] flex items-center justify-center'
+                                onClick={deletarTema}>
                         {isLoading ?
                             <RotatingLines
                                 strokeColor="white"
@@ -109,4 +110,4 @@ function DeletarTema() {
         </div>
     )
 }
-export default DeletarTema
+export default DeletarTema;

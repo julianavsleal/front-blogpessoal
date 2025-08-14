@@ -9,14 +9,14 @@ function CardTemas({tema}: CardTemasProps){
     return (
 
             <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-            <header className='py-2 px-6 bg-indigo-800 text-white font-bold text-2xl'>
+            <header className='py-2 px-6 bg-[#C6AC8F] text-white font-bold text-2xl'>
             Tema
             </header>
-            <p className='p-8 text-3xl bg-slate-200 h-full'>{tema.descricao}</p>
+            <p className='p-8 text-3xl  h-full'>{tema.descricao}</p>
             
             <div className="flex">
                 <Link to={`/editartema/${tema.id}`}
-                    className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 
+                    className='w-full text-slate-100 bg-[#6b705c] hover:bg-[#3f4238]
                     flex items-center justify-center py-2'>
                     <button>Editar</button>
                 </Link>
@@ -32,4 +32,4 @@ function CardTemas({tema}: CardTemasProps){
     )
 }
 
-export default CardTemas
+export default CardTemas;

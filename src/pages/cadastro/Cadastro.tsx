@@ -4,6 +4,7 @@ import type Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
 import "./Cadastro.css"
 import { RotatingLines } from "react-loader-spinner";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Cadastro() {
 
@@ -51,12 +52,12 @@ function Cadastro() {
 
             try{
                 await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario)
-                alert ("Usuário cadastrado com sucesso!")
+                ToastAlerta ("Usuário cadastrado com sucesso!", "sucesso")
         } catch(erro){
-            alert("Erro ao cadastrar o usuário!") 
+            ToastAlerta("Erro ao cadastrar o usuário!", "erro") 
         }
         }else {
-            alert("Dados do usuário inconsistentes! Verifique as informações do cadastro.")
+            ToastAlerta("Dados do usuário inconsistentes! Verifique as informações do cadastro.", "info")
             setUsuario({...usuario, senha: ""})
             setConfirmaSenha("")
         }
@@ -142,8 +143,8 @@ function Cadastro() {
             </button>
             <button 
                 type='submit'
-                className='rounded text-white bg-indigo-400 
-                hover:bg-indigo-900 w-1/2 py-2
+                className='rounded text-white bg-[#6b705c] 
+                hover:bg-[#3f4238] w-1/2 py-2
                 flex justify-center' 
                 >
                 {isLoading ? <RotatingLines
@@ -164,4 +165,4 @@ function Cadastro() {
 )
 }
 
-export default Cadastro
+export default Cadastro;

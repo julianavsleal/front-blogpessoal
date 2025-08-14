@@ -11,11 +11,14 @@ function CardPostagem({ postagem }: CardPostagensProps) {
             flex flex-col rounded overflow-hidden justify-between'>
                 
             <div>
-                <div className="flex w-full bg-indigo-400 py-2 px-4 items-center gap-4">
+                <div className="flex w-full bg-[#C6AC8F] py-2 px-4 items-center gap-4">
                     <img
-                        src={postagem.usuario?.foto}
-                        className='h-12 rounded-full'
-                        alt={postagem.usuario?.nome} />
+                    src={postagem.usuario?.foto || 'https://ik.imagekit.io/dx8zsh14om/user-pic.png'}
+                    onError={(e) => e.currentTarget.src = 'https://ik.imagekit.io/dx8zsh14om/user-pic.png'}
+                    alt="Foto do usuário"
+                    className="w-8 rounded-full"
+                    />
+
                     <h3 className='text-lg font-bold text-center uppercase'>
                         {postagem.usuario?.nome}
                     </h3>
@@ -32,7 +35,7 @@ function CardPostagem({ postagem }: CardPostagensProps) {
             </div>
             <div className="flex">
                 <Link to={`/editarpostagem/${postagem.id}`}
-	            className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 
+	            className='w-full text-slate-100 bg-[#6b705c] hover:bg-[#3f4238]
                 flex items-center justify-center py-2'>
 	            <button>Editar</button>
                 </Link>
@@ -47,4 +50,4 @@ function CardPostagem({ postagem }: CardPostagensProps) {
     )
 }
 
-export default CardPostagem
+export default CardPostagem;
